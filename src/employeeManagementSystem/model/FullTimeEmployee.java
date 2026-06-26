@@ -1,0 +1,27 @@
+package employeeManagementSystem.model;
+
+public final class FullTimeEmployee extends Employee {
+
+    private double monthlySalary;
+
+    public FullTimeEmployee(int empId,
+                            String empName,
+                            Department department,
+                            Address address,
+                            double monthlySalary) {
+
+        super(empId, empName, department, address);
+        this.monthlySalary = monthlySalary;
+    }
+
+    @Override
+    public double calcSalary() {
+        return monthlySalary;
+    }
+
+    public void displayDetails() {
+        displayBasicInfo();
+        System.out.println("Employee Type : Full Time");
+        System.out.println("Salary : ₹" + calcSalary());
+    }
+}
