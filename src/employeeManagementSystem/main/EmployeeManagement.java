@@ -4,7 +4,7 @@ import employeeManagementSystem.model.*;
 import employeeManagementSystem.service.EmployeeService;
 
 class EmployeeManagementApp {
-    static void main() {
+    static void main() throws Exception {
         EmployeeService service = new EmployeeService();
 
         Address address1 = new Address(
@@ -31,7 +31,7 @@ class EmployeeManagementApp {
                 50000);
         Employee emp2 = new PartTimeEmployee(
                 2,
-                "Maarimuthu",
+                "Vijay",
                 Department.SALES,
                 address2,
                 250,
@@ -45,43 +45,20 @@ class EmployeeManagementApp {
         service.addEmployee(emp1);
         service.addEmployee(emp2);
         service.addEmployee(emp3);
-        System.out.println("\nALL EMPLOYEES : ");
 
+        System.out.println("\nALL EMPLOYEES : ");
         service.displayAllEmployees();
 
-        try {
+        System.out.println("\nSEARCH EMPLOYEE :");
+        Employee employee = service.searchEmployee(2);
+        employee.displayBasicInfo();
+        System.out.println("Salary : ₹"+ employee.calcSalary());
 
-            System.out.println("\nSEARCH EMPLOYEE :");
+        System.out.println("\nREMOVE EMPLOYEE :");
+        service.removeEmployee(1);
 
-            Employee employee = service.searchEmployee(2);
+        System.out.println("\nUPDATED LIST :");
+        service.displayAllEmployees();
 
-            employee.displayBasicInfo();
-
-
-            System.out.println(
-                    "Salary : ₹"
-                            + employee.calcSalary());
-
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-        }
-
-        try {
-
-            System.out.println(
-                    "\nREMOVE EMPLOYEE :");
-
-            service.removeEmployee(1);
-
-            System.out.println(
-                    "\nUPDATED LIST :");
-
-            service.displayAllEmployees();
-
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-        }
     }
 }

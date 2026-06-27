@@ -31,7 +31,6 @@ public sealed abstract class Employee permits FullTimeEmployee, PartTimeEmployee
     public int getEmpId() {
         return empId;
     }
-
     public String getEmpName() {
         return empName;
     }
